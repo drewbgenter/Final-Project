@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
     @project.user_id = params[:user_id]
 
     if @project.save
-      redirect_to "/projects", :notice => "Project created successfully."
+      redirect_to :back, :notice => "Project created successfully."
     else
       render 'new'
     end
@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
     @project.user_id = params[:user_id]
 
     if @project.save
-      redirect_to "/projects", :notice => "Project updated successfully."
+      redirect_to :back, :notice => "Project updated successfully."
     else
       render 'edit'
     end
@@ -49,6 +49,6 @@ class ProjectsController < ApplicationController
 
     @project.destroy
 
-    redirect_to "/projects", :notice => "Project deleted."
+    redirect_to :back, :notice => "Project deleted."
   end
 end

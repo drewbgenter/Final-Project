@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     @task.project_id = params[:project_id]
 
     if @task.save
-      redirect_to "/projects/#{@task.project_id}", :notice => "Task created successfully."
+      redirect_to :back, :notice => "Task created successfully."
     else
       render 'new'
     end
@@ -44,7 +44,7 @@ class TasksController < ApplicationController
     @task.project_id = params[:project_id]
 
     if @task.save
-      redirect_to "/tasks", :notice => "Task updated successfully."
+      redirect_to :back, :notice => "Task updated successfully."
     else
       render 'edit'
     end
@@ -55,6 +55,6 @@ class TasksController < ApplicationController
 
     @task.destroy
 
-    redirect_to "/tasks", :notice => "Task deleted."
+    redirect_to :back, :notice => "Task deleted."
   end
 end
