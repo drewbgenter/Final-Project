@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     @task.project_id = params[:project_id]
 
     if @task.save
-      redirect_to "/tasks", :notice => "Task created successfully."
+      redirect_to "/projects/#{@task.project_id}", :notice => "Task created successfully."
     else
       render 'new'
     end
