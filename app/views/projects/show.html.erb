@@ -21,7 +21,7 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>Deadline</th>
+      <th>Status</th>
     </tr>
   </thead>
 
@@ -30,12 +30,6 @@
       <tr>
         <td><%= task.title %></td>
         <td><%= task.description %></td>
-        <td><%= task.deadline %></td>
-        <td>
-          <a href="/tasks/<%= task.id %>" class="btn btn-primary">
-            <i class="fa fa-search-plus"></i>
-          </a>
-        </td>
         <td>
           <a href="/tasks/<%= task.id %>/edit" class="btn btn-warning">
             <i class="fa fa-edit"></i>
@@ -57,8 +51,16 @@
     <label for="title" class="col-sm-2 control-label">
       Title
     </label>
+    <div class="col-sm-4">
+      <textarea id="title" name="title" placeholder="To Do" class="form-control" rows="1"></textarea>
+    </div>
+  </div>
+
+  <!-- Label and input for deadline -->
+  <div class="form-group">
+
     <div class="col-sm-10">
-      <textarea id="title" name="title" placeholder="To Do" class="form-control" rows="3"></textarea>
+      <input type="hidden" id="deadline" name="deadline" placeholder="deadline" class="form-control" value="<%= @project.deadline %>">
     </div>
   </div>
 
@@ -73,15 +75,6 @@
     </div>
   </div>
 
-  <!-- Label and input for deadline -->
-  <div class="form-group">
-    <label for="deadline" class="col-sm-2 control-label">
-      Deadline
-    </label>
-    <div class="col-sm-10">
-      <textarea id="deadline" name="deadline" placeholder="<%= @project.deadline %>" class="form-control" rows="3"></textarea>
-    </div>
-  </div>
 
   <!-- Label and input for project_id -->
   <div class="form-group">
