@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1>Task #<%= @task.id %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Completer</dt>
+  <dd><%= @task.completer_id %></dd>
+
+  <dt>Is completed</dt>
+  <dd><%= @task.is_completed %></dd>
+
+  <dt>Is claimed</dt>
+  <dd><%= @task.is_claimed %></dd>
+
+  <dt>Deadline</dt>
+  <dd><%= @task.deadline %></dd>
+
+  <dt>Description</dt>
+  <dd><%= @task.description %></dd>
+
+  <dt>Title</dt>
+  <dd><%= @task.title %></dd>
+
+  <dt>Project</dt>
+  <dd><%= @task.project_id %></dd>
+
+</dl>

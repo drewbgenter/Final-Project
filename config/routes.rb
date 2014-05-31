@@ -1,4 +1,38 @@
 Rails.application.routes.draw do
+  # Routes for the Task resource:
+  # CREATE
+  get('/tasks/new', { :controller => 'tasks', :action => 'new' })
+  get('/create_task', { :controller => 'tasks', :action => 'create' })
+
+  # READ
+  get('/tasks', { :controller => 'tasks', :action => 'index' })
+  get('/tasks/:id', { :controller => 'tasks', :action => 'show' })
+
+  # UPDATE
+  get('/tasks/:id/edit', { :controller => 'tasks', :action => 'edit' })
+  get('/update_task/:id', { :controller => 'tasks', :action => 'update' })
+
+  # DELETE
+  get('/delete_task/:id', { :controller => 'tasks', :action => 'destroy' })
+  #------------------------------
+
+  # Routes for the Project resource:
+  # CREATE
+  get('/projects/new', { :controller => 'projects', :action => 'new' })
+  get('/create_project', { :controller => 'projects', :action => 'create' })
+
+  # READ
+  get('/projects', { :controller => 'projects', :action => 'index' })
+  get('/projects/:id', { :controller => 'projects', :action => 'show' })
+
+  # UPDATE
+  get('/projects/:id/edit', { :controller => 'projects', :action => 'edit' })
+  get('/update_project/:id', { :controller => 'projects', :action => 'update' })
+
+  # DELETE
+  get('/delete_project/:id', { :controller => 'projects', :action => 'destroy' })
+  #------------------------------
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
