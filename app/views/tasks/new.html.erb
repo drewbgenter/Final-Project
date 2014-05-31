@@ -13,37 +13,25 @@
 
 
 <form action="/create_task" class="form-horizontal">
-  <!-- Label and input for completer_id -->
+
+  <!-- Label and input for title -->
   <div class="form-group">
-    <label for="completer_id" class="col-sm-2 control-label">
-      Completer
+    <label for="title" class="col-sm-2 control-label">
+      Title
     </label>
     <div class="col-sm-10">
-      <input type="text" id="completer_id" name="completer_id" placeholder="Completer" class="form-control" value="<%= @task.completer_id %>">
+      <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @task.title %>">
     </div>
   </div>
 
-  <!-- Label and input for is_completed -->
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <div class="checkbox">
-        <label for="is_completed">
-          <input type="checkbox" id="is_completed" name="is_completed" value="1" <%= "checked" if @task.is_completed %>>
-          Is completed
-        </label>
-      </div>
-    </div>
-  </div>
 
-  <!-- Label and input for is_claimed -->
+  <!-- Label and input for description -->
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <div class="checkbox">
-        <label for="is_claimed">
-          <input type="checkbox" id="is_claimed" name="is_claimed" value="1" <%= "checked" if @task.is_claimed %>>
-          Is claimed
-        </label>
-      </div>
+    <label for="description" class="col-sm-2 control-label">
+      Description
+    </label>
+    <div class="col-sm-10">
+      <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @task.description %></textarea>
     </div>
   </div>
 
@@ -57,33 +45,51 @@
     </div>
   </div>
 
-  <!-- Label and input for description -->
+
+
+  <!-- Label and input for completer_id -->
   <div class="form-group">
-    <label for="description" class="col-sm-2 control-label">
-      Description
-    </label>
     <div class="col-sm-10">
-      <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @task.description %></textarea>
+      <input type="hidden" id="completer_id" name="completer_id" placeholder="Completer" class="form-control" value="<%= @task.completer_id %>">
     </div>
   </div>
 
-  <!-- Label and input for title -->
+  <!-- Label and input for is_completed -->
   <div class="form-group">
-    <label for="title" class="col-sm-2 control-label">
-      Title
-    </label>
-    <div class="col-sm-10">
-      <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @task.title %>">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label for="is_completed">
+          <input type="hidden" id="is_completed" name="is_completed" value="1" <%= "checked" if @task.is_completed %>>
+        </label>
+      </div>
     </div>
   </div>
+
+  <!-- Label and input for is_claimed -->
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label for="is_claimed">
+          <input type="hidden" id="is_claimed" name="is_claimed" value="1" <%= "checked" if @task.is_claimed %>>
+        </label>
+      </div>
+    </div>
+  </div>
+
 
   <!-- Label and input for project_id -->
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="project_id" class="col-sm-2 control-label">
       Project
     </label>
     <div class="col-sm-10">
       <input type="text" id="project_id" name="project_id" placeholder="Project" class="form-control" value="<%= @task.project_id %>">
+    </div>
+  </div> -->
+    <!-- Label and input for project_id -->
+  <div class="form-group">
+    <div class="col-sm-10">
+      <input type="hidden" id="project_id" name="project_id" placeholder="Project" class="form-control" value="<%= @task.project_id %>">
     </div>
   </div>
 
