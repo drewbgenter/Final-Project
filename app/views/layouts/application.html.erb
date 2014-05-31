@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>FinalProject</title>
+  <title>WorkFlo</title>
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/slate/bootstrap.min.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
@@ -42,8 +42,8 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <% if false %>
-          <li><a href="/users/edit">Oscar the Grouch</a></li>
+        <% if current_user.present? %>
+          <li><a href="/users/edit"><%= current_user.email %></a></li>
           <li><a href="/users/sign_out" data-method="delete">Sign out</a></li>
         <% else %>
           <li><a href="/users/sign_up">Sign up</a></li>
