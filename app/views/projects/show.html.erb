@@ -18,28 +18,11 @@
 <table>
 <% @project.tasks.each do |task| %>
 
-<dl class="dl-horizontal">
-
-  <dt>Title</dt>
-  <dd><%= @task.title %></dd>
-
-  <dt>Claimed?</dt>
-  <dd><%= @task.is_claimed %></dd>
-
-  <dt>Completed?</dt>
-  <dd><%= @task.is_completed %></dd>
-
-  <dt>Completer</dt>
-  <dd><%= @task.completer_id %></dd>
-
-  <dt>Deadline</dt>
-  <dd><%= @task.deadline %></dd>
-
-  <dt>Description</dt>
-  <dd><%= @task.description %></dd>
-
-
-</dl>
+  <tr>
+    <td>
+        <%= task.description%>
+    </td>
+  </tr>
 
 <% end %>
 </table>
@@ -47,19 +30,19 @@
 <form action="/create_task" class="form-horizontal">
   <!-- Label and input for content -->
   <div class="form-group">
-    <label for="content" class="col-sm-2 control-label">
-      Add Task
+    <label for="description" class="col-sm-2 control-label">
+      Task
     </label>
     <div class="col-sm-10">
-      <textarea id="content" name="content" placeholder="To Do List" class="form-control" rows="3"></textarea>
+      <textarea id="description" name="description" placeholder="To Do" class="form-control" rows="3"></textarea>
     </div>
   </div>
 
-  <!-- Label and input for project_id -->
+  <!-- Label and input for photo_id -->
   <div class="form-group">
 
     <div class="col-sm-10">
-      <input type="hidden" id="photo_id" name="photo_id" placeholder="Photo" class="form-control" value="<%= @project.id %>">
+      <input type="hidden" id="project_id" name="project_id" placeholder="Project" class="form-control" value="<%= @project.id %>">
     </div>
   </div>
 
@@ -72,7 +55,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <input type="submit" value="Add Task" class="btn btn-primary">
+      <input type="submit" value="Create Task" class="btn btn-primary">
     </div>
   </div>
 </form>
