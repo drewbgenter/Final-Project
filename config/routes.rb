@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root 'projects#index'
   # Routes for the Task resource:
   # CREATE
   get('/tasks/new', { :controller => 'tasks', :action => 'new' })
