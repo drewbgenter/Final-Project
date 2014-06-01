@@ -31,13 +31,13 @@
         <td><%= task.title %></td>
         <td><%= task.description %></td>
         <td>
-      <% if task.claimer_id.blank? %>
+      <% if task.claimer.nil? %>
         <form action="/claim_task/<%= task.id %>" class="form-horizontal">
-          <input type="hidden" id="claimer_id" name="claimer_id" class="form-control" value="<%= current_user.id %>">
+          <input type="hidden" id="claimer" name="claimer" class="form-control" value="<%= current_user.name %>">
           <input type="submit" value="Claim Task" class="btn btn-warning">
         </form>
       <% else %>
-          <%= task.claimer_id %>
+          Claimed By <%= task.claimer %>
       <% end %>
         </td>
       <% if task.user_id == current_user.id %>
