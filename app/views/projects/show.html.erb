@@ -32,6 +32,21 @@
         <td><%= task.description %></td>
         <td>
 
+      <% if task.claimer != current_user.name && task.claimer != "" && task.completer == "" %>
+          Claimed By <%= task.claimer %>
+      <% end %>
+
+      <% if task.completer != nil && task.completer != current_user.name && task.completer != "" && task.claimer != current_user.name %>
+          Completed By <%= task.completer %>
+      <% end %>
+
+      <% if task.completer == current_user.name %>
+          <form action="/complete_task/<%= task.id %>" class="form-horizontal">
+          <input type="hidden" id="completer" name="completer" class="form-control" value="">
+          <input type="submit" value="Uncomplete" class="btn btn-danger">
+        </form>
+      <% end %>
+
       <% if task.claimer.nil? or task.claimer.empty? %>
         <form action="/claim_task/<%= task.id %>" class="form-horizontal">
           <input type="hidden" id="claimer" name="claimer" class="form-control" value="<%= current_user.name %>">
@@ -50,18 +65,14 @@
         </form>
       <% end %>
 
-      <% if task.claimer.nil? && task.claimer != current_user.name && task.claimer != "" && task.completer != nil %>
-          Claimed By <%= task.claimer %>
-      <% end %>
-
-      <% if task.completer != nil && task.completer != current_user.name && task.completer != ""%>
-          Completed By <%= task.claimer %>
-      <% end %>
-
-      <% if task.completer != nil && task.completer != "" && task.completer == current_user.name%>
-          <form action="/complete_task/<%= task.id %>" class="form-horizontal">
-          <input type="hidden" id="completer" name="completer" class="form-control" value="">
-          <input type="submit" value="Uncomplete" class="btn btn-danger">
+      <% if task.claimer == current_user.name && task.completer != nil && task.completer = "" && task.completer != current_user.name%>
+        <form action="/complete_task/<%= task.id %>" class="form-horizontal">
+          <input type="hidden" id="completer" name="completer" class="form-control" value="<%= current_user.name %>">
+          <input type="submit" value="Complete" class="btn btn-success">
+        </form>
+          <form action="/claim_task/<%= task.id %>" class="form-horizontal">
+          <input type="hidden" id="claimer" name="claimer" class="form-control" value="">
+          <input type="submit" value="Unclaim" class="btn btn-danger">
         </form>
       <% end %>
 
