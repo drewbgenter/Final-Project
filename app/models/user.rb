@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :projects
   has_many :tasks
-  has_many :claimed_tasks, :through => :tasks, :source => :project
+  has_many :claimed_tasks, :through => :tasks, :source => :claimer_id
 
 
 end
