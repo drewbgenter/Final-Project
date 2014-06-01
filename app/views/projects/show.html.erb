@@ -36,7 +36,15 @@
           <input type="hidden" id="claimer" name="claimer" class="form-control" value="<%= current_user.name %>">
           <input type="submit" value="Claim Task" class="btn btn-warning">
         </form>
-      <% else %>
+      <% end %>
+
+      <% if task.claimer == current_user.name %>
+        <form action="/complete_task/<%= task.id %>" class="form-horizontal">
+          <input type="hidden" id="completer" name="completer" class="form-control" value="<%= current_user.name %>">
+          <input type="submit" value="Complete Task" class="btn btn-success">
+        </form>
+      <% end %>
+      <% if task.claimer != nil && task.claimer != current_user.name%>
           Claimed By <%= task.claimer %>
       <% end %>
         </td>
