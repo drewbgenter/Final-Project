@@ -1,10 +1,25 @@
 class ProjectsController < ApplicationController
+  before_action(:set_project, :only => [:show, :edit, :destroy, :update])
+
+  before_action(:signed_in_user_must_be_owner, :only => [:edit, :destroy, :update])
+
+
+  def signed_in_user_must_be_owner
+    if @project.user_id != current_user.id
+      redirect_to root_url, :notice => "Beat It Kid"
+    end
+  end
+
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
   def index
     @projects = Project.all
   end
 
   def show
-    @project = Project.find(params[:id])
+
   end
 
   def new
@@ -26,11 +41,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
+
   end
 
   def update
-    @project = Project.find(params[:id])
+
 
     @project.title = params[:title]
     @project.description = params[:description]
@@ -45,7 +60,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
+
 
     @project.destroy
 
