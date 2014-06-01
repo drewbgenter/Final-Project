@@ -31,8 +31,13 @@
         <td><%= task.title %></td>
         <td><%= task.description %></td>
         <td>
-      <% if task.is_claimed = true %>
-      <input type="submit" value="Claim Task" class="btn btn-warning">
+      <% if task.claimer_id.blank? %>
+        <form action="/claim_task/<%= task.id %>" class="form-horizontal">
+          <input type="hidden" id="claimer_id" name="claimer_id" class="form-control" value="<%= current_user.id %>">
+          <input type="submit" value="Claim Task" class="btn btn-warning">
+        </form>
+      <% else %>
+          <%= task.claimer_id %>
       <% end %>
         </td>
       <% if task.user_id == current_user.id %>
@@ -97,22 +102,6 @@
   <div class="form-group">
     <div class="col-sm-10">
       <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
-    </div>
-  </div>
-
-  <!-- Label and input for is_claimed -->
-  <div class="form-group">
-
-    <div class="col-sm-10">
-      <input type="hidden" id="is_claimed" name="is_claimed" placeholder="false" class="form-control" value="false">
-    </div>
-  </div>
-
-  <!-- Label and input for is_completed -->
-  <div class="form-group">
-
-    <div class="col-sm-10">
-      <input type="hidden" id="is_completed" name="is_completed" placeholder="false" class="form-control" value="false">
     </div>
   </div>
 

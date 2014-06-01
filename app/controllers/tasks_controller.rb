@@ -15,8 +15,7 @@ class TasksController < ApplicationController
     @task = Task.new
     @task.user_id = params[:user_id]
     @task.completer_id = params[:completer_id]
-    @task.is_completed = params[:is_completed]
-    @task.is_claimed = params[:is_claimed]
+    @task.claimer_id = params[:completer_id]
     @task.deadline = params[:deadline]
     @task.description = params[:description]
     @task.title = params[:title]
@@ -37,8 +36,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     @task.completer_id = params[:completer_id]
-    @task.is_completed = params[:is_completed]
-    @task.is_claimed = params[:is_claimed]
+    @task.claimer_id = params[:completer_id]
     @task.deadline = params[:deadline]
     @task.description = params[:description]
     @task.title = params[:title]
@@ -50,6 +48,31 @@ class TasksController < ApplicationController
       render 'edit'
     end
   end
+
+  def claim
+    @task = Task.find(params[:id])
+
+    @task.claimer_id = params[:claimer_id]
+
+    if @task.save
+      redirect_to :back, :notice => "Task claimed."
+    else
+      render 'edit'
+    end
+  end
+
+  def complete
+    @task = Task.find(params[:id])
+
+    @task.completer_id = params[:completer_id]
+
+    if @task.save
+      redirect_to :back, :notice => "Task completed."
+    else
+      render 'edit'
+    end
+  end
+
 
   def destroy
     @task = Task.find(params[:id])
