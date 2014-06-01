@@ -13,6 +13,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new
+    @task.user_id = params[:user_id]
     @task.completer_id = params[:completer_id]
     @task.is_completed = params[:is_completed]
     @task.is_claimed = params[:is_claimed]
