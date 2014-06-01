@@ -32,7 +32,7 @@
         <td><%= task.description %></td>
         <td>
 
-      <% if task.claimer != current_user.name && task.claimer != "" && task.completer == "" %>
+      <% if task.claimer != current_user.name && task.claimer != nil && task.claimer != "" && task.completer.nil? %>
           Claimed By <%= task.claimer %>
       <% end %>
 
