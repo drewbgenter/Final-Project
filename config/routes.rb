@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   get('/tasks/:id/edit', { :controller => 'tasks', :action => 'edit' })
   get('/update_task/:id', { :controller => 'tasks', :action => 'update' })
   get('/claim_task/:id', { :controller => 'tasks', :action => 'claim' })
+  get('/unclaim_task/:id', { :controller => 'tasks', :action => 'unclaim' })
   get('/complete_task/:id', { :controller => 'tasks', :action => 'complete' })
+  get('/uncomplete_task/:id', { :controller => 'tasks', :action => 'complete' })
 
   # DELETE
   get('/delete_task/:id', { :controller => 'tasks', :action => 'destroy' })

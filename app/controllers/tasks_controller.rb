@@ -61,6 +61,30 @@ class TasksController < ApplicationController
     end
   end
 
+  def unclaim
+    @task = Task.find(params[:id])
+
+    @task.claimer = params[:claimer]
+
+    if @task.save
+      redirect_to :back, :notice => "Task claimed."
+    else
+      render 'edit'
+    end
+  end
+
+  def uncomplete
+    @task = Task.find(params[:id])
+
+    @task.completer = params[:completer]
+
+    if @task.save
+      redirect_to :back, :notice => "Task completed."
+    else
+      render 'edit'
+    end
+  end
+
   def complete
     @task = Task.find(params[:id])
 
