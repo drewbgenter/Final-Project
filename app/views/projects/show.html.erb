@@ -16,6 +16,7 @@
 </dl>
 
 <h2>To Do List</h2>
+
 <table class="table table-hover">
   <thead>
     <tr>
@@ -33,6 +34,10 @@
         <td>
 
       <% if task.claimer != current_user.name && task.claimer != nil && task.claimer != "" && task.completer.nil? %>
+          Claimed By <%= task.claimer %>
+      <% end %>
+
+      <% if task.claimer != current_user.name && task.claimer != nil && task.claimer != "" && task.completer == "" %>
           Claimed By <%= task.claimer %>
       <% end %>
 
@@ -54,7 +59,8 @@
         </form>
       <% end %>
 
-      <% if task.claimer == current_user.name && task.completer.nil? %>
+
+      <% if task.claimer == current_user.name && task.completer == nil && task.completer != current_user.name%>
         <form action="/complete_task/<%= task.id %>" class="form-horizontal">
           <input type="hidden" id="completer" name="completer" class="form-control" value="<%= current_user.name %>">
           <input type="submit" value="Complete" class="btn btn-success">
@@ -65,7 +71,7 @@
         </form>
       <% end %>
 
-      <% if task.claimer == current_user.name && task.completer != nil && task.completer = "" && task.completer != current_user.name%>
+      <% if task.claimer == current_user.name && task.completer == "" && task.completer != current_user.name%>
         <form action="/complete_task/<%= task.id %>" class="form-horizontal">
           <input type="hidden" id="completer" name="completer" class="form-control" value="<%= current_user.name %>">
           <input type="submit" value="Complete" class="btn btn-success">

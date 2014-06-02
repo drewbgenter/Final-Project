@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :projects
+  has_many :jobs, :class_name => "project"
   has_many :tasks
   has_many :claimed_tasks, :through => :tasks, :source => :claimer_id
 
