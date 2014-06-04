@@ -7,8 +7,11 @@
   <dt>Description</dt>
   <dd><%= @project.description %></dd>
 
-  <dt>Deadline</dt>
-  <dd><%= @project.deadline.strftime('%a %D %r') %></dd>
+  <dt>Date</dt>
+  <dd><%= @project.date %></dd>
+
+  <dt>Time</dt>
+  <dd><%= @project.time %></dd>
 
   <dt>Created By</dt>
   <dd><%= @project.user.name %></dd>
@@ -103,14 +106,6 @@
     </label>
     <div class="col-sm-4">
       <textarea id="title" name="title" placeholder="To Do" class="form-control" rows="1"></textarea>
-    </div>
-  </div>
-
-  <!-- Label and input for deadline -->
-  <div class="form-group">
-
-    <div class="col-sm-10">
-      <input type="hidden" id="deadline" name="deadline" placeholder="deadline" class="form-control" value="<%= @project.deadline %>">
     </div>
   </div>
 

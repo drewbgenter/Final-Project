@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :jobs, :class_name => "project"
   has_many :tasks
+  has_many :events, :through => :projects, :source => :claimer
 
 
 end

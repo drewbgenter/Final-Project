@@ -30,8 +30,9 @@ class ProjectsController < ApplicationController
     @project = Project.new
     @project.title = params[:title]
     @project.description = params[:description]
-    @project.deadline = params[:deadline]
+    @project.date = params[:date]
     @project.user_id = params[:user_id]
+    @project.time = params[:time]
 
     if @project.save
       redirect_to "/projects", :notice => "Project created successfully."
@@ -49,7 +50,8 @@ class ProjectsController < ApplicationController
 
     @project.title = params[:title]
     @project.description = params[:description]
-    @project.deadline = params[:deadline]
+    @project.date = params[:date]
+    @project.time = params[:time]
     @project.user_id = params[:user_id]
 
     if @project.save

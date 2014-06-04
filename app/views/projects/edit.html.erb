@@ -12,6 +12,13 @@
 <% end %>
 
 <form action="/update_project/<%= @project.id %>" class="form-horizontal">
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <input type="submit" value="Update Project" class="btn btn-primary">
+    </div>
+  </div>
+
   <!-- Label and input for title -->
   <div class="form-group">
     <label for="title" class="col-sm-2 control-label">
@@ -32,29 +39,35 @@
     </div>
   </div>
 
-  <!-- Label and input for deadline -->
+  <!-- Label and input for time -->
   <div class="form-group">
-    <label for="deadline" class="col-sm-2 control-label">
-      Deadline
+    <label for="date" class="col-sm-2 control-label">
+      Time
     </label>
     <div class="col-sm-10">
-      <input type="text" id="deadline" name="deadline" placeholder="Deadline" class="form-control" value="<%= @project.deadline %>">
+      <input type="text" id="date" name="time" placeholder="time" class="form-control" value="<%= @project.time %>">
     </div>
   </div>
+
+  <!-- Label and input for date -->
+  <div class="form-group">
+    <label for="date" class="col-sm-2 control-label">
+      Date
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="date" name="date" placeholder="date" class="form-control" value="<%= @project.date %>">
+    </div>
+  </div>
+  <script type="text/javascript">
+ $('#date').datepicker();
+  </script>
 
   <!-- Label and input for user_id -->
   <div class="form-group">
-    <label for="user_id" class="col-sm-2 control-label">
-      User
-    </label>
     <div class="col-sm-10">
-      <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @project.user_id %>">
+      <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @project.user_id %>">
     </div>
   </div>
 
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <input type="submit" value="Update Project" class="btn btn-primary">
-    </div>
-  </div>
+
 </form>
